@@ -5312,6 +5312,16 @@ namespace FallGuysStats.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap fallalytics_icon {
+            get {
+                object obj = ResourceManager.GetObject("fallalytics_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap fallguys_db_logo {
             get {
                 object obj = ResourceManager.GetObject("fallguys_db_logo", resourceCulture);
@@ -5325,6 +5335,16 @@ namespace FallGuysStats.Properties {
         internal static System.Drawing.Bitmap fallguys_icon {
             get {
                 object obj = ResourceManager.GetObject("fallguys_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap fandom_icon {
+            get {
+                object obj = ResourceManager.GetObject("fandom_icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -5455,6 +5475,16 @@ namespace FallGuysStats.Properties {
         internal static System.Drawing.Bitmap link_on_icon {
             get {
                 object obj = ResourceManager.GetObject("link_on_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap main_icon {
+            get {
+                object obj = ResourceManager.GetObject("main_icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -5865,6 +5895,26 @@ namespace FallGuysStats.Properties {
         internal static System.Drawing.Bitmap ps_icon {
             get {
                 object obj = ResourceManager.GetObject("ps_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap reddit_icon {
+            get {
+                object obj = ResourceManager.GetObject("reddit_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap roll_off_club_icon {
+            get {
+                object obj = ResourceManager.GetObject("roll_off_club_icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

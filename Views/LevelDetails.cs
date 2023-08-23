@@ -536,8 +536,10 @@ namespace FallGuysStats {
                         showCompare = one.ShowID.CompareTo(two.ShowID);
                         return showCompare != 0 ? showCompare : roundCompare;
                     case "ShowNameId":
-                        int showNameCompare = (string.IsNullOrEmpty(one.ShowNameId) ? @" " : one.ShowNameId).CompareTo(string.IsNullOrEmpty(two.ShowNameId) ? @" " : two.ShowNameId);
-                        return showNameCompare != 0 ? showNameCompare : roundCompare;
+                        string showNameIdOne = Multilingual.GetShowName(one.ShowNameId) ?? @" ";
+                        string showNameIdTwo = Multilingual.GetShowName(two.ShowNameId) ?? @" ";
+                        int showNameIdCompare = showNameIdOne.CompareTo(showNameIdTwo);
+                        return showNameIdCompare != 0 ? showNameIdCompare : roundCompare;
                     case "Round":
                         roundCompare = one.Round.CompareTo(two.Round);
                         return roundCompare == 0 ? showCompare : roundCompare;
@@ -863,8 +865,7 @@ namespace FallGuysStats {
                                 Stats.CurrentLanguage == 1 ? "                " :
                                 Stats.CurrentLanguage == 2 ? "            " :
                                 Stats.CurrentLanguage == 3 ? "            " :
-                                Stats.CurrentLanguage == 4 || Stats.CurrentLanguage == 5 ? "         " :
-                                                             "            ";
+                                Stats.CurrentLanguage == 4 || Stats.CurrentLanguage == 5 ? "         " : "            ";
                 for (int i = 0; i < creativeOnlinePlatformIdArr.Length; i++) {
                     strbuilder.Append(i == 0 ? $"{Multilingual.GetWord("level_detail_creative_author")} : {createAuthorArr[i]} ({this.GetCreativeOnlinePlatformName(creativeOnlinePlatformIdArr[i])})"
                                              : $"{Environment.NewLine}{indent}{createAuthorArr[i]} ({this.GetCreativeOnlinePlatformName(creativeOnlinePlatformIdArr[i])})");
@@ -888,7 +889,7 @@ namespace FallGuysStats {
                 strbuilder.Append(Environment.NewLine);
                 strbuilder.Append($"# {Multilingual.GetWord("level_detail_share_code_copied_tooltip")}");
 
-                this.StatsForm.AllocCustomTooltip(0);
+                this.StatsForm.AllocCustomTooltip(this.StatsForm.cmtt_levelDetails_Draw);
                 Point cursorPosition = this.PointToClient(Cursor.Position);
                 Point position = new Point(cursorPosition.X, cursorPosition.Y);
                 this.StatsForm.ShowCustomTooltip(strbuilder.ToString(), this, position);

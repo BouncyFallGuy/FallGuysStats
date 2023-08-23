@@ -25,6 +25,7 @@ namespace FallGuysStats {
         private int LaunchPlatform;
         private int DisplayLang;
         private bool CboOverlayBackgroundIsFocus;
+        private bool TrkOverlayOpacityIsEnter;
 
         private Bitmap ResizeImage(Bitmap source, int scale) {
             return new Bitmap(source, new Size(source.Width / scale, source.Height / scale));
@@ -242,7 +243,6 @@ namespace FallGuysStats {
 
         private void SetTheme(MetroThemeStyle theme) {
             this.BackImage = theme == MetroThemeStyle.Light ? Properties.Resources.setting_icon : Properties.Resources.setting_gray_icon;
-            this.cboOverlayBackground.mtt.Theme = theme;
             this.cboOverlayBackground_blur(theme);
             foreach (Control c1 in Controls) {
                 if (c1 is MetroLabel ml1) {
@@ -683,13 +683,23 @@ namespace FallGuysStats {
             this.ChangeLanguage(((ComboBox)sender).SelectedIndex);
         }
         private void trkOverlayOpacity_ValueChanged(object sender, EventArgs e) {
-            if (((MetroTrackBar)sender).Value == this.Overlay.Opacity * 100D) { return; }
-            Point cursorPosition = this.PointToClient(Cursor.Position);
-            Point position = new Point(cursorPosition.X + 4, cursorPosition.Y - 20);
-            this.StatsForm.ShowTooltip(((MetroTrackBar)sender).Value.ToString(), this, position);
-            this.Overlay.Opacity = ((MetroTrackBar)sender).Value / 100D;
+            if (((MetroTrackBar)sender).Value == (this.Overlay.Opacity * 100)) { return; }
+            this.Overlay.Opacity = ((MetroTrackBar)sender).Value / 100d;
+            if (this.TrkOverlayOpacityIsEnter) {
+                Point cursorPosition = this.PointToClient(Cursor.Position);
+                Point position = new Point(cursorPosition.X + 4, cursorPosition.Y - 20);
+                this.StatsForm.ShowTooltip(((MetroTrackBar)sender).Value.ToString(), this, position);
+            } else {
+                Point position = new Point(this.trkOverlayOpacity.Location.X + 220 + (this.trkOverlayOpacity.Width * ((MetroTrackBar)sender).Value / 102), this.trkOverlayOpacity.Location.Y + 74);
+                this.StatsForm.ShowTooltip(((MetroTrackBar)sender).Value.ToString(), this, position, 1500);
+            }
+            
+        }
+        private void trkOverlayOpacity_MouseEnter(object sender, EventArgs e) {
+            this.TrkOverlayOpacityIsEnter = true;
         }
         private void trkOverlayOpacity_MouseLeave(object sender, EventArgs e) {
+            this.TrkOverlayOpacityIsEnter = false;
             this.StatsForm.HideTooltip(this);
         }
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData) {
@@ -904,8 +914,9 @@ namespace FallGuysStats {
                 this.txtGameExeLocation.Size = new Size(567 - this.txtGameExeLocation.Location.X, 25);
             }
             this.chkFallalyticsReporting.Text = Multilingual.GetWord("settings_sends_info_about_rounds_played_to_fallalytics");
-            this.fallalyticsAPIKeyLable.Text = Multilingual.GetWord("settings_enter_fallalytics_api_key");
-            this.fallalyticsLink.Text = Multilingual.GetWord("settings_visit_fallalytics");
+            this.lblFallalyticsAPIKey.Text = Multilingual.GetWord("settings_enter_fallalytics_api_key");
+            this.lblFallalyticsDesc.Text = Multilingual.GetWord("settings_fallalytics_desc");
+            this.linkFallalytics.Text = $@"    {Multilingual.GetWord("settings_visit_fallalytics")}";
             
             this.fglink1.Text = Multilingual.GetWord("settings_github");
             this.fglink2.Text = $"{Multilingual.GetWord("settings_issue_traker")} && {Multilingual.GetWord("settings_translation")}";
@@ -921,12 +932,12 @@ namespace FallGuysStats {
         }
 
         private void ChangeTab(object sender, EventArgs e) {
-            this.panelProgram.Location = new Point(218, 75);
-            this.panelDisplay.Location = new Point(218, 75);
-            this.panelOverlay.Location = new Point(218, 75);
-            this.panelFallGuys.Location = new Point(218, 75);
-            this.panelAbout.Location = new Point(218, 75);
-            this.panelFallalytics.Location = new Point(218, 75);
+            this.panelProgram.Location = new Point(211, 75);
+            this.panelDisplay.Location = new Point(211, 75);
+            this.panelOverlay.Location = new Point(211, 75);
+            this.panelFallGuys.Location = new Point(211, 75);
+            this.panelAbout.Location = new Point(211, 75);
+            this.panelFallalytics.Location = new Point(211, 75);
             this.panelProgram.Visible = false;
             this.panelDisplay.Visible = false;
             this.panelOverlay.Visible = false;
@@ -1018,7 +1029,7 @@ namespace FallGuysStats {
             if (sender.Equals(this.lbltpl4)) {
                 this.openLink(@"https://github.com/ScottPlot/ScottPlot/blob/main/LICENSE");
             }
-            if (sender.Equals(this.fallalyticsLink)) {
+            if (sender.Equals(this.linkFallalytics)) {
                 this.openLink(@"https://fallalytics.com/");
             }
         }

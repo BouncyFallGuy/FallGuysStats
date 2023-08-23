@@ -124,8 +124,9 @@
             this.lblVersion = new MetroFramework.Controls.MetroLabel();
             this.lblLicence = new MetroFramework.Controls.MetroLabel();
             this.panelFallalytics = new MetroFramework.Controls.MetroPanel();
-            this.fallalyticsLink = new MetroFramework.Controls.MetroLink();
-            this.fallalyticsAPIKeyLable = new MetroFramework.Controls.MetroLabel();
+            this.linkFallalytics = new MetroFramework.Controls.MetroLink();
+            this.lblFallalyticsDesc = new MetroFramework.Controls.MetroLabel();
+            this.lblFallalyticsAPIKey = new MetroFramework.Controls.MetroLabel();
             this.txtFallalyticsAPIKey = new MetroFramework.Controls.MetroTextBox();
             this.chkFallalyticsReporting = new MetroFramework.Controls.MetroCheckBox();
             this.tileFallalytics = new MetroFramework.Controls.MetroTile();
@@ -167,7 +168,7 @@
             this.lblLogPathNote.Name = "lblLogPathNote";
             this.lblLogPathNote.Size = new System.Drawing.Size(486, 15);
             this.lblLogPathNote.TabIndex = 2;
-            this.lblLogPathNote.Text = "* You should not need to set this. Only use when the program is not reading the c" + "orrect location.";
+            this.lblLogPathNote.Text = "* You should not need to set this. Only use when the program is not reading the correct location.";
             // 
             // txtLogPath
             // 
@@ -411,7 +412,7 @@
             this.cboOverlayColor.Items.AddRange(new object[] { "Transparent", "Black", "Magenta", "Red", "Green", "Blue" });
             this.cboOverlayColor.Location = new System.Drawing.Point(203, 383);
             this.cboOverlayColor.Name = "cboOverlayColor";
-            this.cboOverlayColor.Size = new System.Drawing.Size(240, 29);
+            this.cboOverlayColor.Size = new System.Drawing.Size(310, 29);
             this.cboOverlayColor.TabIndex = 21;
             this.cboOverlayColor.UseSelectable = true;
             // 
@@ -442,9 +443,10 @@
             this.trkOverlayOpacity.Location = new System.Drawing.Point(203, 420);
             this.trkOverlayOpacity.MouseWheelBarPartitions = 10000;
             this.trkOverlayOpacity.Name = "trkOverlayOpacity";
-            this.trkOverlayOpacity.Size = new System.Drawing.Size(240, 29);
+            this.trkOverlayOpacity.Size = new System.Drawing.Size(310, 29);
             this.trkOverlayOpacity.TabIndex = 23;
             this.trkOverlayOpacity.Value = 100;
+            this.trkOverlayOpacity.MouseEnter += new System.EventHandler(this.trkOverlayOpacity_MouseEnter);
             this.trkOverlayOpacity.MouseLeave += new System.EventHandler(this.trkOverlayOpacity_MouseLeave);
             this.trkOverlayOpacity.ValueChanged += new System.EventHandler(this.trkOverlayOpacity_ValueChanged);
             // 
@@ -1133,7 +1135,7 @@
             this.tileProgram.BackColor = System.Drawing.Color.LightGray;
             this.tileProgram.Location = new System.Drawing.Point(12, 73);
             this.tileProgram.Name = "tileProgram";
-            this.tileProgram.Size = new System.Drawing.Size(200, 45);
+            this.tileProgram.Size = new System.Drawing.Size(193, 45);
             this.tileProgram.TabIndex = 9;
             this.tileProgram.Text = "Program";
             this.tileProgram.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1157,9 +1159,9 @@
             this.panelProgram.HorizontalScrollbarBarColor = true;
             this.panelProgram.HorizontalScrollbarHighlightOnWheel = false;
             this.panelProgram.HorizontalScrollbarSize = 10;
-            this.panelProgram.Location = new System.Drawing.Point(29, 15);
+            this.panelProgram.Location = new System.Drawing.Point(22, 15);
             this.panelProgram.Name = "panelProgram";
-            this.panelProgram.Size = new System.Drawing.Size(660, 450);
+            this.panelProgram.Size = new System.Drawing.Size(667, 450);
             this.panelProgram.TabIndex = 10;
             this.panelProgram.VerticalScrollbarBarColor = true;
             this.panelProgram.VerticalScrollbarHighlightOnWheel = false;
@@ -1176,9 +1178,9 @@
             this.panelDisplay.HorizontalScrollbarBarColor = true;
             this.panelDisplay.HorizontalScrollbarHighlightOnWheel = false;
             this.panelDisplay.HorizontalScrollbarSize = 10;
-            this.panelDisplay.Location = new System.Drawing.Point(29, 119);
+            this.panelDisplay.Location = new System.Drawing.Point(22, 119);
             this.panelDisplay.Name = "panelDisplay";
-            this.panelDisplay.Size = new System.Drawing.Size(660, 162);
+            this.panelDisplay.Size = new System.Drawing.Size(667, 162);
             this.panelDisplay.TabIndex = 11;
             this.panelDisplay.VerticalScrollbarBarColor = true;
             this.panelDisplay.VerticalScrollbarHighlightOnWheel = false;
@@ -1190,7 +1192,7 @@
             this.tileDisplay.BackColor = System.Drawing.Color.LightGray;
             this.tileDisplay.Location = new System.Drawing.Point(12, 124);
             this.tileDisplay.Name = "tileDisplay";
-            this.tileDisplay.Size = new System.Drawing.Size(200, 45);
+            this.tileDisplay.Size = new System.Drawing.Size(193, 45);
             this.tileDisplay.TabIndex = 12;
             this.tileDisplay.Text = "Display";
             this.tileDisplay.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1239,9 +1241,9 @@
             this.panelOverlay.HorizontalScrollbarBarColor = true;
             this.panelOverlay.HorizontalScrollbarHighlightOnWheel = false;
             this.panelOverlay.HorizontalScrollbarSize = 10;
-            this.panelOverlay.Location = new System.Drawing.Point(297, 6);
+            this.panelOverlay.Location = new System.Drawing.Point(22, 6);
             this.panelOverlay.Name = "panelOverlay";
-            this.panelOverlay.Size = new System.Drawing.Size(660, 500);
+            this.panelOverlay.Size = new System.Drawing.Size(667, 500);
             this.panelOverlay.TabIndex = 13;
             this.panelOverlay.VerticalScrollbar = true;
             this.panelOverlay.VerticalScrollbarBarColor = true;
@@ -1260,7 +1262,7 @@
             this.cboOverlayBackground.ItemHeight = 23;
             this.cboOverlayBackground.Location = new System.Drawing.Point(203, 348);
             this.cboOverlayBackground.Name = "cboOverlayBackground";
-            this.cboOverlayBackground.Size = new System.Drawing.Size(240, 23);
+            this.cboOverlayBackground.Size = new System.Drawing.Size(310, 23);
             this.cboOverlayBackground.TabIndex = 19;
             this.cboOverlayBackground.GotFocus += new System.EventHandler(this.cboOverlayBackground_GotFocus);
             this.cboOverlayBackground.LostFocus += new System.EventHandler(this.cboOverlayBackground_LostFocus);
@@ -1273,7 +1275,7 @@
             this.tileOverlay.BackColor = System.Drawing.Color.LightGray;
             this.tileOverlay.Location = new System.Drawing.Point(12, 175);
             this.tileOverlay.Name = "tileOverlay";
-            this.tileOverlay.Size = new System.Drawing.Size(200, 45);
+            this.tileOverlay.Size = new System.Drawing.Size(193, 45);
             this.tileOverlay.TabIndex = 14;
             this.tileOverlay.Text = "Overlay";
             this.tileOverlay.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1287,7 +1289,7 @@
             this.tileFallGuys.BackColor = System.Drawing.Color.LightGray;
             this.tileFallGuys.Location = new System.Drawing.Point(12, 226);
             this.tileFallGuys.Name = "tileFallGuys";
-            this.tileFallGuys.Size = new System.Drawing.Size(200, 45);
+            this.tileFallGuys.Size = new System.Drawing.Size(193, 45);
             this.tileFallGuys.TabIndex = 15;
             this.tileFallGuys.Text = "Launch FallGuys";
             this.tileFallGuys.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1306,9 +1308,9 @@
             this.panelFallGuys.HorizontalScrollbarBarColor = true;
             this.panelFallGuys.HorizontalScrollbarHighlightOnWheel = false;
             this.panelFallGuys.HorizontalScrollbarSize = 10;
-            this.panelFallGuys.Location = new System.Drawing.Point(29, 286);
+            this.panelFallGuys.Location = new System.Drawing.Point(22, 286);
             this.panelFallGuys.Name = "panelFallGuys";
-            this.panelFallGuys.Size = new System.Drawing.Size(660, 136);
+            this.panelFallGuys.Size = new System.Drawing.Size(667, 136);
             this.panelFallGuys.TabIndex = 16;
             this.panelFallGuys.VerticalScrollbarBarColor = true;
             this.panelFallGuys.VerticalScrollbarHighlightOnWheel = false;
@@ -1320,7 +1322,7 @@
             this.tileAbout.BackColor = System.Drawing.Color.LightGray;
             this.tileAbout.Location = new System.Drawing.Point(12, 328);
             this.tileAbout.Name = "tileAbout";
-            this.tileAbout.Size = new System.Drawing.Size(200, 45);
+            this.tileAbout.Size = new System.Drawing.Size(193, 45);
             this.tileAbout.TabIndex = 17;
             this.tileAbout.Text = "About";
             this.tileAbout.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1346,9 +1348,9 @@
             this.panelAbout.HorizontalScrollbarBarColor = true;
             this.panelAbout.HorizontalScrollbarHighlightOnWheel = false;
             this.panelAbout.HorizontalScrollbarSize = 10;
-            this.panelAbout.Location = new System.Drawing.Point(29, 428);
+            this.panelAbout.Location = new System.Drawing.Point(22, 428);
             this.panelAbout.Name = "panelAbout";
-            this.panelAbout.Size = new System.Drawing.Size(660, 500);
+            this.panelAbout.Size = new System.Drawing.Size(667, 500);
             this.panelAbout.TabIndex = 18;
             this.panelAbout.VerticalScrollbar = true;
             this.panelAbout.VerticalScrollbarBarColor = true;
@@ -1489,46 +1491,59 @@
             // 
             // panelFallalytics
             // 
-            this.panelFallalytics.Controls.Add(this.fallalyticsLink);
-            this.panelFallalytics.Controls.Add(this.fallalyticsAPIKeyLable);
+            this.panelFallalytics.Controls.Add(this.linkFallalytics);
+            this.panelFallalytics.Controls.Add(this.lblFallalyticsDesc);
+            this.panelFallalytics.Controls.Add(this.lblFallalyticsAPIKey);
             this.panelFallalytics.Controls.Add(this.txtFallalyticsAPIKey);
             this.panelFallalytics.Controls.Add(this.chkFallalyticsReporting);
             this.panelFallalytics.HorizontalScrollbarBarColor = true;
             this.panelFallalytics.HorizontalScrollbarHighlightOnWheel = false;
             this.panelFallalytics.HorizontalScrollbarSize = 10;
-            this.panelFallalytics.Location = new System.Drawing.Point(280, 7);
+            this.panelFallalytics.Location = new System.Drawing.Point(22, 7);
             this.panelFallalytics.Name = "panelFallalytics";
-            this.panelFallalytics.Size = new System.Drawing.Size(640, 498);
+            this.panelFallalytics.Size = new System.Drawing.Size(667, 498);
             this.panelFallalytics.TabIndex = 19;
             this.panelFallalytics.VerticalScrollbarBarColor = true;
             this.panelFallalytics.VerticalScrollbarHighlightOnWheel = false;
             this.panelFallalytics.VerticalScrollbarSize = 15;
             // 
-            // fallalyticsLink
+            // lblFallalyticsDesc
             // 
-            this.fallalyticsLink.AutoSize = true;
-            this.fallalyticsLink.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.fallalyticsLink.FontSize = MetroFramework.MetroLinkSize.Medium;
-            this.fallalyticsLink.ForeColor = System.Drawing.Color.Black;
-            this.fallalyticsLink.Location = new System.Drawing.Point(12, 112);
-            this.fallalyticsLink.Name = "fallalyticsLink";
-            this.fallalyticsLink.Size = new System.Drawing.Size(231, 22);
-            this.fallalyticsLink.TabIndex = 7;
-            this.fallalyticsLink.Text = "Visit Fallalytics";
-            this.fallalyticsLink.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.fallalyticsLink.UseSelectable = true;
-            this.fallalyticsLink.UseStyleColors = true;
-            this.fallalyticsLink.Click += new System.EventHandler(this.link_Click);
+            this.lblFallalyticsDesc.AutoSize = true;
+            this.lblFallalyticsDesc.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.lblFallalyticsDesc.Location = new System.Drawing.Point(11, 128);
+            this.lblFallalyticsDesc.Name = "lblFallalyticsDesc";
+            this.lblFallalyticsDesc.Size = new System.Drawing.Size(206, 19);
+            this.lblFallalyticsDesc.TabIndex = 5;
+            this.lblFallalyticsDesc.Text = "Fallalytics is a tool to explore data collected about round distribution in Fall Guys.";
             // 
-            // fallalyticsAPIKeyLable
+            // linkFallalytics
             // 
-            this.fallalyticsAPIKeyLable.AutoSize = true;
-            this.fallalyticsAPIKeyLable.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.fallalyticsAPIKeyLable.Location = new System.Drawing.Point(11, 51);
-            this.fallalyticsAPIKeyLable.Name = "fallalyticsAPIKeyLable";
-            this.fallalyticsAPIKeyLable.Size = new System.Drawing.Size(206, 19);
-            this.fallalyticsAPIKeyLable.TabIndex = 5;
-            this.fallalyticsAPIKeyLable.Text = "(Optional) Enter Fallalytics API key";
+            this.linkFallalytics.AutoSize = true;
+            this.linkFallalytics.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.linkFallalytics.FontSize = MetroFramework.MetroLinkSize.Medium;
+            this.linkFallalytics.ForeColor = System.Drawing.Color.Black;
+            this.linkFallalytics.Image = global::FallGuysStats.Properties.Resources.fallalytics_icon;
+            this.linkFallalytics.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.linkFallalytics.Location = new System.Drawing.Point(12, 148);
+            this.linkFallalytics.Name = "linkFallalytics";
+            this.linkFallalytics.Size = new System.Drawing.Size(231, 22);
+            this.linkFallalytics.TabIndex = 7;
+            this.linkFallalytics.Text = "Visit Fallalytics";
+            this.linkFallalytics.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.linkFallalytics.UseSelectable = true;
+            this.linkFallalytics.UseStyleColors = true;
+            this.linkFallalytics.Click += new System.EventHandler(this.link_Click);
+            // 
+            // lblFallalyticsAPIKey
+            // 
+            this.lblFallalyticsAPIKey.AutoSize = true;
+            this.lblFallalyticsAPIKey.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.lblFallalyticsAPIKey.Location = new System.Drawing.Point(11, 51);
+            this.lblFallalyticsAPIKey.Name = "lblFallalyticsAPIKey";
+            this.lblFallalyticsAPIKey.Size = new System.Drawing.Size(206, 19);
+            this.lblFallalyticsAPIKey.TabIndex = 5;
+            this.lblFallalyticsAPIKey.Text = "(Optional) Enter Fallalytics API key";
             // 
             // txtFallalyticsAPIKey
             // 
@@ -1575,7 +1590,7 @@
             this.tileFallalytics.BackColor = System.Drawing.Color.LightGray;
             this.tileFallalytics.Location = new System.Drawing.Point(12, 277);
             this.tileFallalytics.Name = "tileFallalytics";
-            this.tileFallalytics.Size = new System.Drawing.Size(200, 45);
+            this.tileFallalytics.Size = new System.Drawing.Size(193, 45);
             this.tileFallalytics.TabIndex = 20;
             this.tileFallalytics.Text = "Fallalytics";
             this.tileFallalytics.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1589,20 +1604,20 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(890, 650);
-            this.Controls.Add(this.panelFallalytics);
-            this.Controls.Add(this.tileFallalytics);
-            this.Controls.Add(this.panelOverlay);
-            this.Controls.Add(this.tileAbout);
-            this.Controls.Add(this.tileFallGuys);
-            this.Controls.Add(this.tileOverlay);
-            this.Controls.Add(this.tileDisplay);
             this.Controls.Add(this.tileProgram);
+            this.Controls.Add(this.tileDisplay);
+            this.Controls.Add(this.tileOverlay);
+            this.Controls.Add(this.tileFallGuys);
+            this.Controls.Add(this.tileFallalytics);
+            this.Controls.Add(this.tileAbout);
+            this.Controls.Add(this.panelProgram);
+            this.Controls.Add(this.panelDisplay);
+            this.Controls.Add(this.panelOverlay);
+            this.Controls.Add(this.panelFallGuys);
+            this.Controls.Add(this.panelFallalytics);
+            this.Controls.Add(this.panelAbout);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.panelAbout);
-            this.Controls.Add(this.panelFallGuys);
-            this.Controls.Add(this.panelDisplay);
-            this.Controls.Add(this.panelProgram);
             this.ForeColor = System.Drawing.Color.Black;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -1642,8 +1657,6 @@
             this.panelFallalytics.PerformLayout();
             this.ResumeLayout(false);
         }
-
-        private MetroFramework.Controls.MetroLink fallalyticsLink;
 
         #endregion
         
@@ -1746,7 +1759,9 @@
         private MetroFramework.Controls.MetroLink lbltpl3;
         private MetroFramework.Controls.MetroLabel lblupdateNote;
         private MetroFramework.Controls.MetroPanel panelFallalytics;
-        private MetroFramework.Controls.MetroLabel fallalyticsAPIKeyLable;
+        private MetroFramework.Controls.MetroLabel lblFallalyticsDesc;
+        private MetroFramework.Controls.MetroLabel lblFallalyticsAPIKey;
+        private MetroFramework.Controls.MetroLink linkFallalytics;
         private MetroFramework.Controls.MetroTextBox txtFallalyticsAPIKey;
         private MetroFramework.Controls.MetroCheckBox chkFallalyticsReporting;
         private MetroFramework.Controls.MetroTile tileFallalytics;
